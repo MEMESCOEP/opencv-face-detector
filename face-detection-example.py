@@ -20,10 +20,20 @@ sizeY = 240
 textX = int(sizeX/3)-25
 textY = int(sizeY/18)+10
 frameSize = (sizeX, sizeY)
+Camera = 0
+FPS = 64
 
 # Setup video stream
 print("[INFO] >> Initializing Camera...")
-vs = VideoStream(src=0, usePiCamera=PiCamera, resolution=frameSize,framerate=32).start()
+vs = VideoStream(src=Camera, usePiCamera=PiCamera, resolution=frameSize,framerate=FPS).start()
+
+# Print Video Stream Info
+print("[INFO] >> Video Stream: {}".format(vs))
+print("[INFO] >> Video Stream Source: Camera #{}".format(Camera))
+print("[INFO] >> Video Stream Resolution: {}px by {}px".format(sizeX,sizeY))
+print("[INFO] >> Video Stream Framerate: {} FPS".format(FPS))
+print("[INFO] >> Using RPI-Camera: {}".format(PiCamera))
+
 
 # Allow camera to initialize.
 time.sleep(0.5)
@@ -70,5 +80,3 @@ while True:
 print("[INFO] >> Exitting...")
 cv2.destroyAllWindows()
 print("[DONE]")
-
-
